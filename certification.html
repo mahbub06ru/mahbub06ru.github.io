@@ -119,19 +119,24 @@
     
     .certificate-item {
       position: relative;
-      cursor: pointer;
+      cursor: default;
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
+      transition: none;
       background: white;
       display: flex;
       flex-direction: column;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
     }
     
     .certificate-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+      transform: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
     
     .certificate-title {
@@ -154,83 +159,18 @@
       aspect-ratio: 4/3;
       object-fit: cover;
       display: block;
-    }
-    
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.8);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      animation: fadeIn 0.3s ease;
-    }
-    
-    .modal.active {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .modal-content {
-      position: relative;
-      max-width: 90%;
-      max-height: 90vh;
-      margin: auto;
-      animation: zoomIn 0.3s ease;
-    }
-    
-    @keyframes zoomIn {
-      from {
-        transform: scale(0.8);
-        opacity: 0;
-      }
-      to {
-        transform: scale(1);
-        opacity: 1;
-      }
-    }
-    
-    .modal-content img {
-      width: 100%;
-      height: auto;
-      max-height: 90vh;
-      object-fit: contain;
-      border-radius: 10px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    }
-    
-    .modal-close {
-      position: absolute;
-      top: -40px;
-      right: 0;
-      color: white;
-      font-size: 35px;
-      font-weight: bold;
-      cursor: pointer;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-    
-    .modal-close:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: rotate(90deg);
-    }
-    
-    body.modal-open {
-      overflow: hidden;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      user-drag: none;
+      touch-action: none;
+      -webkit-touch-callout: none;
     }
     
     @media (max-width: 768px) {
@@ -289,9 +229,6 @@
         min-height: 40px;
       }
       
-      .modal-content {
-        max-width: 95%;
-      }
       
     }
   </style>
@@ -304,38 +241,30 @@
     </div>
     <div class="certificates-grid" id="certificatesGrid">
       <!-- Certificate items - Replace with your actual certificate images -->
-      <div class="certificate-item" onclick="openModal(getAssetPath('assets/assets/images/airticket.jpg'))">
+      <div class="certificate-item">
         <div class="certificate-title">Air Ticketing Certificate</div>
         <img src="assets/assets/images/airticket.jpg" alt="Air Ticket Certificate" loading="lazy" id="airticket-img">
       </div>
-      <div class="certificate-item" onclick="openModal('https://via.placeholder.com/400x300/764ba2/ffffff?text=Certificate+2')">
+      <div class="certificate-item">
         <div class="certificate-title">Software Development</div>
         <img src="https://via.placeholder.com/400x300/764ba2/ffffff?text=Certificate+2" alt="Certificate 2" loading="lazy">
       </div>
-      <div class="certificate-item" onclick="openModal('https://via.placeholder.com/400x300/667eea/ffffff?text=Certificate+3')">
+      <div class="certificate-item">
         <div class="certificate-title">Student Consultancy</div>
         <img src="https://via.placeholder.com/400x300/667eea/ffffff?text=Certificate+3" alt="Certificate 3" loading="lazy">
       </div>
-      <div class="certificate-item" onclick="openModal('https://via.placeholder.com/400x300/764ba2/ffffff?text=Certificate+4')">
+      <div class="certificate-item">
         <div class="certificate-title">Visa Processing</div>
         <img src="https://via.placeholder.com/400x300/764ba2/ffffff?text=Certificate+4" alt="Certificate 4" loading="lazy">
       </div>
-      <div class="certificate-item" onclick="openModal('https://via.placeholder.com/400x300/667eea/ffffff?text=Certificate+5')">
+      <div class="certificate-item">
         <div class="certificate-title">Tour Packages</div>
         <img src="https://via.placeholder.com/400x300/667eea/ffffff?text=Certificate+5" alt="Certificate 5" loading="lazy">
       </div>
-      <div class="certificate-item" onclick="openModal('https://via.placeholder.com/400x300/764ba2/ffffff?text=Certificate+6')">
+      <div class="certificate-item">
         <div class="certificate-title">Professional Training</div>
         <img src="https://via.placeholder.com/400x300/764ba2/ffffff?text=Certificate+6" alt="Certificate 6" loading="lazy">
       </div>
-    </div>
-  </div>
-  
-  <!-- Modal for full-size image -->
-  <div id="imageModal" class="modal" onclick="closeModal()">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <span class="modal-close" onclick="closeModal()">&times;</span>
-      <img id="modalImage" src="" alt="Certificate">
     </div>
   </div>
   
@@ -349,29 +278,6 @@
       const cleanPath = relativePath.startsWith('/') ? relativePath.slice(1) : relativePath;
       return basePath + '/' + cleanPath;
     }
-    
-    // Open modal with full-size image
-    function openModal(imageSrc) {
-      const modal = document.getElementById('imageModal');
-      const modalImg = document.getElementById('modalImage');
-      modal.classList.add('active');
-      modalImg.src = imageSrc;
-      document.body.classList.add('modal-open');
-    }
-    
-    // Close modal
-    function closeModal() {
-      const modal = document.getElementById('imageModal');
-      modal.classList.remove('active');
-      document.body.classList.remove('modal-open');
-    }
-    
-    // Close modal on Escape key
-    document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-        closeModal();
-      }
-    });
     
     // Fix image path on load
     window.addEventListener('DOMContentLoaded', function() {
