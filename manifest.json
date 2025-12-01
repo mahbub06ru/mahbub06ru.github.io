@@ -1,11 +1,11 @@
 {
-    "name": "fl_web_demo",
-    "short_name": "fl_web_demo",
+    "name": "Mahbub - Business Card",
+    "short_name": "Mahbub Card",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Digital Business Card - Md. Mahbubur Rahman - Aeroz Global Services",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

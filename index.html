@@ -1,38 +1,213 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
   <base href="https://mahbub06ru.github.io/portfolio_of_mahbub/">
-
+  
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Digital Business Card - Md. Mahbubur Rahman - Aeroz Global Services">
+  
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="fl_web_demo">
+  <meta name="apple-mobile-web-app-title" content="Mahbub - Business Card">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
+  
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>fl_web_demo</title>
+  
+  <title>Md. Mahbubur Rahman - Digital Business Card</title>
   <link rel="manifest" href="manifest.json">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: #333;
+    }
+    
+    .business-card {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 600px;
+      width: 100%;
+      padding: 40px;
+      animation: fadeIn 0.5s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #667eea;
+    }
+    
+    .name {
+      font-size: 28px;
+      font-weight: 700;
+      color: #667eea;
+      margin-bottom: 10px;
+    }
+    
+    .degree {
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 5px;
+    }
+    
+    .contact-info {
+      margin: 25px 0;
+    }
+    
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin: 12px 0;
+      font-size: 15px;
+    }
+    
+    .contact-item a {
+      color: #667eea;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .contact-item a:hover {
+      color: #764ba2;
+      text-decoration: underline;
+    }
+    
+    .contact-icon {
+      width: 20px;
+      margin-right: 12px;
+      color: #667eea;
+    }
+    
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #667eea;
+      margin: 30px 0 20px 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f0f0f0;
+    }
+    
+    .services-list {
+      list-style: none;
+      margin: 20px 0;
+    }
+    
+    .service-item {
+      padding: 12px 0;
+      font-size: 15px;
+      line-height: 1.6;
+      border-bottom: 1px solid #f0f0f0;
+      transition: padding-left 0.3s;
+    }
+    
+    .service-item:last-child {
+      border-bottom: none;
+    }
+    
+    .service-item:hover {
+      padding-left: 10px;
+      color: #667eea;
+    }
+    
+    .website-link {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 16px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .website-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+    
+    @media (max-width: 600px) {
+      .business-card {
+        padding: 25px;
+      }
+      
+      .name {
+        font-size: 24px;
+      }
+      
+      .section-title {
+        font-size: 20px;
+      }
+      
+      .contact-item, .service-item {
+        font-size: 14px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+  <div class="business-card">
+    <div class="header">
+      <div class="name">Md. Mahbubur Rahman</div>
+      <div class="degree">BSc, MSc in EEE, RU</div>
+    </div>
+    
+    <div class="contact-info">
+      <div class="contact-item">
+        <span class="contact-icon">📱</span>
+        <a href="tel:+8801818120900">+8801818120900</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">✉️</span>
+        <a href="mailto:mahbub06ru@gmail.com">mahbub06ru@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">🌐</span>
+        <a href="https://www.aerozglobal.com" target="_blank" rel="noopener noreferrer">www.aerozglobal.com</a>
+      </div>
+    </div>
+    
+    <div class="section-title">Services / Expertise:</div>
+    <ul class="services-list">
+      <li class="service-item">💻 Software Development – Custom solutions for any business</li>
+      <li class="service-item">🎓 Student Consultancy – Study abroad guidance (all countries)</li>
+      <li class="service-item">🌍 Visa Processing – Tourist, student, business & family visas worldwide</li>
+      <li class="service-item">🏖️ Tour Packages – Corporate, leisure & customised travel packages</li>
+      <li class="service-item">✈️ Air Ticketing – Domestic & international flights</li>
+      <li class="service-item">🛂 E-Passport, NID & Police Clearance – Application & renewal support</li>
+      <li class="service-item">📊 Business & Legal Consultancy – Trade license, TIN, TAX, compliance & more</li>
+      <li class="service-item">🛠️ Professional Training Programs – App development, GDS, AI tools & career skills</li>
+      <li class="service-item">🕋 Hajj & Umrah Services – Complete guidance & package arrangements</li>
+    </ul>
+  </div>
 </body>
 </html>
