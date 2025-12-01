@@ -43,51 +43,6 @@
       line-height: 1.6;
     }
     
-    .page-header {
-      width: 100%;
-      max-width: 650px;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      padding: 15px 20px;
-      margin-bottom: 15px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    
-    .nav-button {
-      padding: 10px 18px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 14px;
-      transition: all 0.3s ease;
-      text-align: center;
-      flex: 1;
-      min-width: 140px;
-      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
-    }
-    
-    .nav-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-    }
-    
-    .nav-button:active {
-      transform: translateY(0);
-    }
-    
-    .nav-button.active {
-      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
-    }
-    
     .business-card {
       background: white;
       border-radius: 20px;
@@ -111,17 +66,90 @@
     
     .header {
       text-align: center;
-      margin-bottom: 35px;
-      padding-bottom: 25px;
+      margin-bottom: 25px;
+      padding-bottom: 20px;
       border-bottom: 2px solid #667eea;
+      position: relative;
+    }
+    
+    .name-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-bottom: 12px;
     }
     
     .name {
       font-size: 30px;
       font-weight: 700;
       color: #667eea;
-      margin-bottom: 12px;
       letter-spacing: -0.5px;
+      margin: 0;
+    }
+    
+    .menu-icon {
+      position: absolute;
+      right: 0;
+      cursor: pointer;
+      font-size: 28px;
+      color: #667eea;
+      transition: all 0.3s ease;
+      padding: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+    
+    .menu-icon:hover {
+      background: #f0f0f0;
+      transform: rotate(90deg);
+    }
+    
+    .menu-dropdown {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      min-width: 250px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      z-index: 100;
+      overflow: hidden;
+    }
+    
+    .menu-dropdown.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    
+    .menu-item {
+      display: block;
+      padding: 15px 20px;
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+    
+    .menu-item:hover {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding-left: 25px;
     }
     
     .degree {
@@ -140,7 +168,7 @@
     }
     
     .contact-info {
-      margin: 30px 0;
+      margin: 20px 0;
       text-align: center;
     }
     
@@ -148,7 +176,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 16px 0;
+      margin: 10px 0;
       font-size: 16px;
       font-weight: 500;
     }
@@ -171,54 +199,123 @@
       display: inline-block;
     }
     
-    .whatsapp-button {
+    /* Floating WhatsApp Button */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      z-index: 999;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    
+    .whatsapp-fab:hover {
+      background: #20BA5A;
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.5);
+    }
+    
+    .whatsapp-fab:active {
+      transform: scale(0.95);
+    }
+    
+    .whatsapp-fab-icon {
+      font-size: 32px;
+      color: white;
+    }
+    
+    /* Pulse animation */
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      }
+      50% {
+        box-shadow: 0 4px 25px rgba(37, 211, 102, 0.6);
+      }
+      100% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+      }
+    }
+    
+    .whatsapp-fab {
+      animation: pulse 2s ease-in-out infinite;
+    }
+    
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+    
+    .fb-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      margin-top: 25px;
-      padding: 14px 28px;
-      background: #25D366;
+      padding: 10px 18px;
+      background: #1877F2;
       color: white;
       text-decoration: none;
-      border-radius: 12px;
+      border-radius: 8px;
       font-weight: 600;
-      font-size: 16px;
+      font-size: 14px;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-      gap: 10px;
+      box-shadow: 0 2px 8px rgba(24, 119, 242, 0.3);
+      gap: 8px;
     }
     
-    .whatsapp-button:hover {
-      background: #20BA5A;
+    .fb-button:hover {
+      background: #166FE5;
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+      box-shadow: 0 4px 12px rgba(24, 119, 242, 0.4);
     }
     
-    .whatsapp-button:active {
+    .fb-button:active {
       transform: translateY(0);
     }
     
-    .whatsapp-icon {
-      font-size: 22px;
+    .fb-icon {
+      font-size: 16px;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 4px;
+      font-family: Arial, sans-serif;
+      line-height: 1;
     }
     
     .section-title {
       font-size: 24px;
       font-weight: 700;
       color: #667eea;
-      margin: 40px 0 25px 0;
-      padding-bottom: 12px;
+      margin: 25px 0 18px 0;
+      padding-bottom: 10px;
       border-bottom: 2px solid #f0f0f0;
       letter-spacing: -0.3px;
     }
     
     .services-list {
       list-style: none;
-      margin: 25px 0 10px 0;
+      margin: 18px 0 5px 0;
     }
     
     .service-item {
-      padding: 14px 0;
+      padding: 10px 0;
       font-size: 16px;
       line-height: 1.7;
       border-bottom: 1px solid #f0f0f0;
@@ -262,6 +359,10 @@
         font-size: 26px;
       }
       
+      .name-container {
+        padding-right: 50px;
+      }
+      
       .degree {
         font-size: 15px;
       }
@@ -270,24 +371,48 @@
         font-size: 14px;
       }
       
+      .header {
+        margin-bottom: 20px;
+        padding-bottom: 18px;
+      }
+      
+      .contact-info {
+        margin: 18px 0;
+      }
+      
       .section-title {
         font-size: 21px;
-        margin: 35px 0 20px 0;
+        margin: 25px 0 15px 0;
       }
       
       .contact-item {
         font-size: 15px;
-        margin: 14px 0;
+        margin: 8px 0;
       }
       
       .service-item {
         font-size: 15px;
-        padding: 12px 0;
+        padding: 10px 0;
       }
       
-      .whatsapp-button {
-        padding: 12px 24px;
-        font-size: 15px;
+      .social-buttons {
+        margin-top: 12px;
+        gap: 8px;
+      }
+      
+      .fb-button {
+        padding: 8px 14px;
+        font-size: 13px;
+      }
+      
+      .menu-icon {
+        font-size: 24px;
+        width: 35px;
+        height: 35px;
+      }
+      
+      .menu-dropdown {
+        min-width: 220px;
       }
     }
     
@@ -305,6 +430,26 @@
         font-size: 23px;
       }
       
+      .name-container {
+        padding-right: 45px;
+      }
+      
+      .menu-icon {
+        font-size: 22px;
+        width: 32px;
+        height: 32px;
+      }
+      
+      .menu-dropdown {
+        min-width: 200px;
+        top: 45px;
+      }
+      
+      .menu-item {
+        padding: 12px 16px;
+        font-size: 14px;
+      }
+      
       .degree {
         font-size: 14px;
       }
@@ -315,12 +460,21 @@
       
       .section-title {
         font-size: 19px;
-        margin: 30px 0 18px 0;
+        margin: 20px 0 15px 0;
+      }
+      
+      .header {
+        margin-bottom: 20px;
+        padding-bottom: 15px;
+      }
+      
+      .contact-info {
+        margin: 15px 0;
       }
       
       .contact-item {
         font-size: 14px;
-        margin: 12px 0;
+        margin: 8px 0;
         flex-direction: row;
         justify-content: center;
         gap: 8px;
@@ -333,58 +487,50 @@
       
       .service-item {
         font-size: 14px;
-        padding: 11px 0;
+        padding: 9px 0;
         line-height: 1.6;
       }
       
-      .whatsapp-button {
-        padding: 11px 20px;
-        font-size: 14px;
+      .social-buttons {
+        margin-top: 10px;
+        gap: 6px;
+        flex-direction: column;
+        width: 100%;
+      }
+      
+      .fb-button {
+        padding: 8px 16px;
+        font-size: 13px;
         width: 100%;
         max-width: 280px;
       }
       
-      .page-header {
-        padding: 12px 15px;
-        margin-bottom: 12px;
-        gap: 8px;
+      .whatsapp-fab {
+        width: 55px;
+        height: 55px;
+        bottom: 15px;
+        right: 15px;
       }
       
-      .nav-button {
-        padding: 9px 12px;
-        font-size: 13px;
-        min-width: 110px;
-        flex: 1 1 calc(33.333% - 6px);
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .page-header {
-        padding: 10px 12px;
-        margin-bottom: 10px;
-        gap: 6px;
-      }
-      
-      .nav-button {
-        padding: 8px 10px;
-        font-size: 12px;
-        min-width: 0;
-        flex: 1 1 100%;
+      .whatsapp-fab-icon {
+        font-size: 28px;
       }
     }
     
   </style>
 </head>
 <body>
-  <div class="page-header">
-    <a href="certification.html" class="nav-button">Certificate of Achievements</a>
-    <a href="courses.html" class="nav-button">Skill Development Courses</a>
-    <a href="success.html" class="nav-button">Success Histories</a>
-  </div>
-  
   <div class="business-card">
     <div class="header">
-      <div class="name">Md. Mahbubur Rahman</div>
+      <div class="name-container">
+        <div class="name">Md. Mahbubur Rahman</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <div class="menu-dropdown" id="menuDropdown">
+          <a href="certification.html" class="menu-item">Certificate of Achievements</a>
+          <a href="courses.html" class="menu-item">Skill Development Courses</a>
+          <a href="success.html" class="menu-item">Success Histories</a>
+        </div>
+      </div>
       <div class="degree">BSc, MSc in EEE, RU</div>
       <div class="job-title">Sr. Software Engineer at Convey-Powerley Group, USA</div>
     </div>
@@ -402,10 +548,20 @@
         <span class="contact-icon">🌐</span>
         <a href="https://www.aerozglobal.com" target="_blank" rel="noopener noreferrer">www.aerozglobal.com</a>
       </div>
-      <a href="https://wa.me/8801818120900" target="_blank" rel="noopener noreferrer" class="whatsapp-button">
-        <span class="whatsapp-icon">💬</span>
-        <span>Chat on WhatsApp</span>
-      </a>
+      <div class="social-buttons">
+        <a href="https://www.facebook.com/mahbub06ru4/" target="_blank" rel="noopener noreferrer" class="fb-button">
+          <span class="fb-icon">f</span>
+          <span>Personal</span>
+        </a>
+        <a href="https://www.facebook.com/Mahbub360Hub" target="_blank" rel="noopener noreferrer" class="fb-button">
+          <span class="fb-icon">f</span>
+          <span>Page</span>
+        </a>
+        <a href="https://www.facebook.com/groups/skilldevtrainingandforum/" target="_blank" rel="noopener noreferrer" class="fb-button">
+          <span class="fb-icon">f</span>
+          <span>Group</span>
+        </a>
+      </div>
     </div>
     
     <div class="section-title">Services / Expertise:</div>
@@ -423,6 +579,31 @@
   </div>
   
   <script>
+    // Toggle menu dropdown
+    function toggleMenu() {
+      const menu = document.getElementById('menuDropdown');
+      menu.classList.toggle('active');
+    }
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const menu = document.getElementById('menuDropdown');
+      const menuIcon = document.querySelector('.menu-icon');
+      if (menu && !menu.contains(event.target) && !menuIcon.contains(event.target)) {
+        menu.classList.remove('active');
+      }
+    });
+    
+    // Close menu on Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        const menu = document.getElementById('menuDropdown');
+        if (menu) {
+          menu.classList.remove('active');
+        }
+      }
+    });
+    
     // Fix base href for local file access
     if (window.location.protocol === 'file:') {
       const base = document.querySelector('base');
@@ -433,5 +614,10 @@
       }
     }
   </script>
+  
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/8801818120900" target="_blank" rel="noopener noreferrer" class="whatsapp-fab" title="Chat on WhatsApp">
+    <span class="whatsapp-fab-icon">💬</span>
+  </a>
 </body>
 </html>
