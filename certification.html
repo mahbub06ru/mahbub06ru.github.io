@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="/">
+  
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Certificate of Achievements - Md. Mahbubur Rahman">
+  
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Mahbub - Certificates">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+  
+  <title>Certificate of Achievements - Md. Mahbubur Rahman</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 3px;
+      color: #333;
+      line-height: 1.6;
+    }
+    
+    .page-header {
+      width: 100%;
+      max-width: 650px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    
+    .nav-button {
+      padding: 10px 18px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      text-align: center;
+      flex: 1;
+      min-width: 140px;
+      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+    }
+    
+    .nav-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    }
+    
+    .nav-button:active {
+      transform: translateY(0);
+    }
+    
+    .nav-button.active {
+      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+    }
+    
+    .certificates-section {
+      width: 100%;
+      max-width: 650px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      padding: 40px;
+      animation: fadeIn 0.5s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .section-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #667eea;
+      position: relative;
+    }
+    
+    .section-header h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #667eea;
+      margin: 0;
+      text-align: center;
+    }
+    
+    .back-button {
+      position: absolute;
+      left: 0;
+      background: #f0f0f0;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 14px;
+      cursor: pointer;
+      color: #667eea;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    
+    .back-button:hover {
+      background: #667eea;
+      color: white;
+      transform: translateX(-3px);
+    }
+    
+    .certificates-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 20px;
+    }
+    
+    .certificate-item {
+      position: relative;
+      cursor: pointer;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      background: white;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .certificate-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+    }
+    
+    .certificate-title {
+      padding: 12px 15px;
+      background: #f8f9fa;
+      border-bottom: 2px solid #667eea;
+      font-size: 15px;
+      font-weight: 600;
+      color: #667eea;
+      text-align: center;
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .certificate-item img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+    }
+    
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .modal-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90vh;
+      margin: auto;
+      animation: zoomIn 0.3s ease;
+    }
+    
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 10px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      color: white;
+      font-size: 35px;
+      font-weight: bold;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: rotate(90deg);
+    }
+    
+    body.modal-open {
+      overflow: hidden;
+    }
+    
+    @media (max-width: 768px) {
+      .certificates-section {
+        padding: 30px 25px;
+      }
+      
+      .section-header h2 {
+        font-size: 24px;
+      }
+      
+      .back-button {
+        padding: 6px 12px;
+        font-size: 13px;
+      }
+      
+      .certificates-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+      
+      .certificate-title {
+        padding: 10px 12px;
+        font-size: 14px;
+        min-height: 45px;
+      }
+      
+      .page-header {
+        padding: 12px 15px;
+        margin-bottom: 12px;
+        gap: 8px;
+      }
+      
+      .nav-button {
+        padding: 9px 12px;
+        font-size: 13px;
+        min-width: 110px;
+        flex: 1 1 calc(33.333% - 6px);
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .certificates-section {
+        padding: 25px 20px;
+      }
+      
+      .section-header h2 {
+        font-size: 22px;
+      }
+      
+      .back-button {
+        padding: 6px 10px;
+        font-size: 12px;
+      }
+      
+      .certificates-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+      
+      .certificate-title {
+        padding: 8px 10px;
+        font-size: 13px;
+        min-height: 40px;
+      }
+      
+      .modal-content {
+        max-width: 95%;
+      }
+      
+      .page-header {
+        padding: 10px 12px;
+        margin-bottom: 10px;
+        gap: 6px;
+      }
+      
+      .nav-button {
+        padding: 8px 10px;
+        font-size: 12px;
+        min-width: 0;
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-header">
+    <a href="certification.html" class="nav-button active">Certificate of Achievements</a>
+    <a href="courses.html" class="nav-button">Skill Development Courses</a>
+    <a href="success.html" class="nav-button">Success Histories</a>
+  </div>
+  
+  <div class="certificates-section">
+    <div class="section-header">
+      <a href="index.html" class="back-button">← Home</a>
+      <h2>Certificate of Achievements</h2>
+    </div>
+    <div class="certificates-grid" id="certificatesGrid">
+      <!-- Certificate items - Replace with your actual certificate images -->
+      <div class="certificate-item" onclick="openModal(getAssetPath('assets/assets/images/airticket.jpg'))">
+        <div class="certificate-title">Air Ticketing Certificate</div>
+        <img src="assets/assets/images/airticket.jpg" alt="Air Ticket Certificate" loading="lazy" id="airticket-img">
+      </div>
+      <div class="certificate-item" onclick="openModal('https://via.placeholder.com/400x300/764ba2/ffffff?text=Certificate+2')">
+        <div class="certificate-title">Software Development</div>
+        <img src="https://via.placeholder.com/400x300/764ba2/ffffff?text=Certificate+2" alt="Certificate 2" loading="lazy">
+      </div>
+      <div class="certificate-item" onclick="openModal('https://via.placeholder.com/400x300/667eea/ffffff?text=Certificate+3')">
+        <div class="certificate-title">Student Consultancy</div>
+        <img src="https://via.placeholder.com/400x300/667eea/ffffff?text=Certificate+3" alt="Certificate 3" loading="lazy">
+      </div>
+      <div class="certificate-item" onclick="openModal('https://via.placeholder.com/400x300/764ba2/ffffff?text=Certificate+4')">
+        <div class="certificate-title">Visa Processing</div>
+        <img src="https://via.placeholder.com/400x300/764ba2/ffffff?text=Certificate+4" alt="Certificate 4" loading="lazy">
+      </div>
+      <div class="certificate-item" onclick="openModal('https://via.placeholder.com/400x300/667eea/ffffff?text=Certificate+5')">
+        <div class="certificate-title">Tour Packages</div>
+        <img src="https://via.placeholder.com/400x300/667eea/ffffff?text=Certificate+5" alt="Certificate 5" loading="lazy">
+      </div>
+      <div class="certificate-item" onclick="openModal('https://via.placeholder.com/400x300/764ba2/ffffff?text=Certificate+6')">
+        <div class="certificate-title">Professional Training</div>
+        <img src="https://via.placeholder.com/400x300/764ba2/ffffff?text=Certificate+6" alt="Certificate 6" loading="lazy">
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal for full-size image -->
+  <div id="imageModal" class="modal" onclick="closeModal()">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <img id="modalImage" src="" alt="Certificate">
+    </div>
+  </div>
+  
+  <script>
+    // Get base path for assets
+    function getAssetPath(relativePath) {
+      const base = document.querySelector('base')?.getAttribute('href') || '/';
+      // Remove trailing slash from base if present
+      const basePath = base.endsWith('/') ? base.slice(0, -1) : base;
+      // Remove leading slash from relative path if present
+      const cleanPath = relativePath.startsWith('/') ? relativePath.slice(1) : relativePath;
+      return basePath + '/' + cleanPath;
+    }
+    
+    // Open modal with full-size image
+    function openModal(imageSrc) {
+      const modal = document.getElementById('imageModal');
+      const modalImg = document.getElementById('modalImage');
+      modal.classList.add('active');
+      modalImg.src = imageSrc;
+      document.body.classList.add('modal-open');
+    }
+    
+    // Close modal
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+    
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    });
+    
+    // Fix image path on load
+    window.addEventListener('DOMContentLoaded', function() {
+      const img = document.getElementById('airticket-img');
+      if (img) {
+        const correctPath = getAssetPath('assets/assets/images/airticket.jpg');
+        img.src = correctPath;
+        img.onerror = function() {
+          console.log('Image path tried:', correctPath);
+          // Try alternative paths
+          const altPaths = [
+            './assets/assets/images/airticket.jpg',
+            '/assets/assets/images/airticket.jpg',
+            'portfolio_of_mahbub/assets/assets/images/airticket.jpg'
+          ];
+          let currentIndex = 0;
+          const tryNextPath = () => {
+            if (currentIndex < altPaths.length) {
+              img.src = altPaths[currentIndex];
+              currentIndex++;
+            }
+          };
+          img.onerror = tryNextPath;
+          tryNextPath();
+        };
+      }
+    });
+  </script>
+  
+  <script>
+    // Fix base href for local file access
+    if (window.location.protocol === 'file:') {
+      const base = document.querySelector('base');
+      if (base) {
+        const currentPath = window.location.pathname;
+        const directory = currentPath.substring(0, currentPath.lastIndexOf('/') + 1);
+        base.href = directory || './';
+      }
+    }
+  </script>
+</body>
+</html>
+
